@@ -55,7 +55,7 @@ async function loadTasks() {
   }
 }
 
-
+// ---------------------- RENDER ------------
 function render() {
   const signature = JSON.stringify([filter.value, tasks]);
   if (signature === dernierRendu) return;
@@ -107,7 +107,15 @@ function render() {
     const del = document.createElement('button');
     del.textContent = 'Supprimer';
     del.className = 'delete';
-    del.addEventListener('click', () => deleteTask(task.id));
+    // ---------- Supprimez une tâche animée: elle s’efface, puis la liste se met à jour ----------
+    del.addEventListener('click', () => { 
+      li.classList.add("is-leaving");
+      li.addEventListener("animationend", (event) => {
+        if (event.animationName !== "card-out") return;
+        deleteTask(task.id);
+      });
+    });
+
     back.append(label, del);
 
     inner.append(front, back);
@@ -119,7 +127,6 @@ function render() {
   tasks.forEach(tache => idsAffiches.add(tache.id));
   premierAffichage = false;
 }
-
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -134,7 +141,7 @@ form.addEventListener("submit", async (event) => {
   }
 });
 
-
+// --------------------------------------------
 async function updateTask(task, done) {
   try {
     await request("/" + encodeURIComponent(task.id), {

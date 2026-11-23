@@ -118,6 +118,16 @@ h2 {
   animation-delay: calc(var(--i, 0) * 60ms);
 }
 
+/* ------------------- Suppression de la carte ----------------------*/
+@keyframes card-out {
+  to { opacity: 0; transform: scale(0.9); }
+}
+ 
+.card.is-leaving {
+  animation: card-out 0.25s ease-in forwards;
+  pointer-events: none;
+}
+
 
 
 .form-row {
