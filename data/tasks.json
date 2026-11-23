@@ -1,17 +1,13 @@
 [
   {
     "id": 1,
-    "title": "Comprendre l’architecture MVC",
-    "done": false
+    "title": "Ma première tâche SQL",
+    "done": false,
+    "created_at": "2026-11-09T13:53:27.000Z"
   },
   {
     "id": 2,
-    "title": "Tester une API JSON",
-    "done": true
-  },
-  {
-    "id": 3,
-    "title": "Préparer mon application mobile",
+    "title": "Préparer le TP Node",
     "done": false
   }
 ]

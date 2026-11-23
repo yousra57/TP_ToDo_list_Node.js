@@ -1,0 +1,348 @@
+:root {
+    font-family: system-ui, Arial, sans-serif;
+    color: #16243a;
+    background: #f2f5fa
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    padding: 32px 12px
+}
+
+main {
+    max-width: 990px;
+    margin: auto;
+    background: white;
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: 0 8px 32px #17325317
+}
+
+h1 {
+    text-align: left;
+    color: white;
+    font-size: 1.7rem;
+    align-items: center
+}
+
+.menu-toggle, 
+.burger { 
+    display: none; 
+}
+
+
+header {
+    text-align: center;
+    max-width: 990px;
+    height: 78px;
+    margin: auto;
+    background: #16243a;
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer
+}
+
+nav {
+    display: flex;
+    gap: 18px
+}
+
+.boutton_entête {
+    text-decoration: none;
+    color: white;
+    font-size: 100%
+}
+.boutton_entête_ligne {
+    text-decoration: none;
+    color: white;
+    font-size: 100%;
+    border-bottom: 2px solid #90bcf5;
+    padding-bottom: 3px
+}
+
+/* ----- Survol lors du passage de la souris sur le lien ----------- */
+a:hover {
+    text-decoration: underline;
+    background-color: #90bcf5;
+    border-radius: 4px
+}
+
+h2 {
+    margin: 0 0 6px
+}
+
+#paragraphe {
+    color: #52647b
+}
+
+/* ------ Animation : bouton de temps réel connecté -------------- */
+#connection {
+    display: inline-block;
+    margin: 8px 0 20px;
+    padding: 6px 10px;
+    border-radius: 20px;
+    background: #fff3d9;
+    font-size: .9rem
+}
+
+
+
+
+.form-row {
+    display: flex;
+    gap: 8px;
+    margin: 8px 0 20px
+}
+
+input {
+    flex: 1;
+    min-width: 0;
+    padding: 11px;
+    border: 1px solid #b5c1d1;
+    border-radius: 7px
+}
+
+/* un halo autour du champ « Nouvelle tâche » */
+
+input { 
+    transition: border-color .2s ease, box-shadow .2s ease; 
+}
+
+input:focus {
+  outline: none;
+  border-color: #2159a4;
+  box-shadow: 0 0 0 4px #2159a433;
+}
+
+
+/* ----- Style pour les boutons et les éléments select ----- */
+button,
+select {
+    padding: 10px 12px;
+    border: 0;
+    border-radius: 7px;
+    background: #2159a4;
+    color: white;
+    cursor: pointer;
+    transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px #2159a440;
+}
+button:active { 
+    transform: scale(.96); 
+}
+
+button:focus-visible, 
+select:focus-visible {
+  outline: 3px solid #f2a541; 
+  outline-offset: 3px;
+}
+
+/* ----- Style pour les boutons secondaires et les éléments select ----- */
+.secondary,
+select {
+    background: #dce7f5;
+    color: #1a3b66
+}
+
+.secondary:hover, select:hover { 
+    background: #c9daf0; 
+}
+#tasks button.delete:hover { 
+    background: #962634; 
+    box-shadow: 0 6px 14px #b5324240; 
+}
+
+
+/* ----- Barre d'outils pour le filtrage et le rafraîchissement ----- */
+.toolbar {
+    align-items: center
+}
+
+#tasks {
+    display: flex;
+    padding: 0;
+    list-style: none;
+    gap: 12px;
+}
+
+#tasks li {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #dce7f5;
+    border-radius: 13px;
+    padding: 14px;
+}
+
+#tasks span {
+    flex: 1;
+    overflow-wrap: anywhere
+}
+
+#tasks li.done span {
+    text-decoration: line-through;
+    color: #697889
+}
+
+#tasks li button.delete {
+    background: #b53242
+}
+
+#message {
+    color: #a02c36;
+    min-height: 1.2em
+}
+
+/* --------------------- */
+#tasks li.card {
+  display: block;                  /* annule le flex de l'étape 0 */
+  padding: 0; border: 0; background: none;
+  perspective: 800px;              /* 1. profondeur, sur le PARENT */
+}
+.card-inner {
+  position: relative;
+  height: 150px;
+  transform-style: preserve-3d;    /* 2. les enfants restent en 3D */
+  transition: transform .4s ease;  /* 3. transition au repos */
+}
+.card:hover .card-inner,
+.card:focus-within .card-inner {   /* 4. clavier : Tab sur la case */
+  transform: rotateY(180deg);
+}
+.face {
+  position: absolute; inset: 0;    /* recto et verso superposés */
+  display: flex; flex-direction: column; justify-content: center; gap: 10px;
+  padding: 16px;
+  border: 1px solid #e8edf4; border-radius: 10px; background: #fbfcfe;
+  backface-visibility: hidden;     /* 5. on ne voit pas l'envers */
+}
+.back {
+  transform: rotateY(180deg);      /* 6. le verso est retourné au départ */
+  background: #dce7f5;
+  align-items: flex-start;
+}
+
+/* ------------------ finitions du recto --------------*/
+.front .title { 
+    font-weight: 600; 
+    overflow-wrap: anywhere; 
+}
+
+#tasks .front span { /* annule le flex:1 de l'étape 0 */
+    flex: none; 
+}   
+
+.badge { 
+    align-self: flex-start; 
+    padding: 3px 10px; 
+    border-radius: 20px; 
+    font-size: .8rem; 
+    background: #fff3d9; 
+}
+
+.card.done .badge { 
+    background: #dbf6e5; 
+}
+
+#tasks li.done .badge { 
+    text-decoration: none; 
+    color: inherit; 
+}
+
+.card.done .title { 
+    text-decoration: line-through; 
+    color: #697889; 
+}
+
+.back label { 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+    cursor: pointer; 
+}
+
+.back input[type="checkbox"] { 
+    flex: none; 
+    width: 18px; 
+    height: 18px; }
+
+
+/*----------------- le soulignement du lien en orange --------------------*/
+.menu a { position: relative; }
+.menu a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -4px;
+  height: 2px;
+  background: #f2a541;
+  transform: scaleX(0);
+  transition: transform .25s ease;
+}
+.menu a:hover::after,
+.menu a:focus-visible::after,
+.menu a.active::after { transform: scaleX(1); }
+
+
+/*----------------- le menu téléphone glisse -------------------------*/
+
+
+
+
+
+
+@media (max-width: 600px) {
+    .burger { display: block; 
+            font-size: 1.5rem; 
+            cursor: pointer; 
+            position: relative; 
+            z-index: 11; 
+            color: rgb(255, 255, 255); }
+    .menu {
+        display: flex;
+        transform: translateX(100%);
+        transition: transform .3s ease;
+        position: fixed;
+        top: 0; right: 0; bottom: 0;
+        width: 70%;
+        flex-direction: column;
+        padding: 70px 24px;
+        background: #051f41;
+        box-shadow: -8px 0 32px #17325326;
+        z-index: 10;
+    }
+    .menu a {
+        margin-bottom: 12px;
+        font-size: 1.2rem;
+        color: white;
+        font-weight: 600;
+    }
+    .menu-toggle:checked ~ .menu { display: flex; } 
+
+    .menu-toggle:checked ~ .menu { transform: translateX(0); }
+    .burger { transition: transform .3s ease; }
+    .menu-toggle:checked + .burger { transform: rotate(90deg); }
+    }
+
+    main {
+        padding: 16px
+    }
+
+    .toolbar {
+        flex-wrap: wrap
+    }
+
+
+

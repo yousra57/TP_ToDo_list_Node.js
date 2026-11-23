@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Mes tâches - TP API temps réel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>ToDo CESI</h1>
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="burger" aria-label="Ouvrir le menu">☰</label>
+        <nav class="menu" aria-label="Navigation principale">
+            <a class="boutton_entête" href="#">Accueil</a>
+            <a class="boutton_entête_ligne" href="#">Mes tâches</a>
+            <a class="boutton_entête" href="#">A propos</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Ma liste de tâches</h2>
+                <p id="paragraphe">Interface cliente d'une API Node.js / MySQL</p>
+                <span id="connection" role="status">Connexion temps réel…</span>
+            <form id="task-form">
+                <label for="title">Nouvelle tâche</label>
+                    <div class="form-row">
+                        <input id="title" name="title" required minlength="2" maxlength="120" placeholder="Ex. Terminer le TP">
+                        <button type="submit">Ajouter</button>
+                    </div>
+            </form>
+                <div class="toolbar">
+                    <label for="filter">Afficher</label>
+                        <select id="filter">
+                            <option value="all">Toutes</option>
+                            <option value="todo">À faire</option>
+                            <option value="done">Terminées</option>
+                        </select>
+                    <button id="refresh" type="button" class="secondary">Actualiser</button>
+                </div>
+        <p id="message" role="alert"></p>
+        <ul id="tasks" aria-live="polite"></ul>
+        <p id="empty" hidden>Aucune tâche à afficher.</p>
+    </main>
+    <script src="app.js" defer></script>
+</body>
+
+</html>
