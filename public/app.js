@@ -62,9 +62,17 @@ function render() {
       filter.value === "all" || (filter.value === "done" ? t.done : !t.done),
   );
   document.getElementById("empty").hidden = shown.length !== 0;
-  for (const task of shown) {
-    const li = document.createElement('li');
-    li.className = 'card';
+  tasks.forEach((task, index) => {
+      const li = document.createElement('li');
+      li.className = 'card';
+
+    // animation qui s'applique pour la nouvelle tâche 
+    if (!idsAffiches.has(task.id)) { // si l'id n'existe pas = tâche nouvelle => on applique l'animation pour la nvl tâche
+      li.classList.add("is-new");
+      li.style.setProperty("--i", premierAffichage ? index : 0);
+    }
+
+
     if (task.done) li.classList.add('done');
 
     const inner = document.createElement('div');
@@ -100,7 +108,11 @@ function render() {
     inner.append(front, back);
     li.append(inner);
     taskList.append(li);
-  }
+  });
+  // Enregistrement de la tâche nouvelle et changement
+  idsAffiches.clear();
+  tasks.forEach(tache => idsAffiches.add(tache.id));
+  premierAffichage = false;
 }
 
 
