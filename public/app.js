@@ -11,6 +11,7 @@ const connection = document.getElementById("connection");
 
 const idsAffiches = new Set();
 let premierAffichage = true;
+let dernierRendu = '';
 
 
 let tasks = [];
@@ -56,6 +57,10 @@ async function loadTasks() {
 
 
 function render() {
+  const signature = JSON.stringify([filter.value, tasks]);
+  if (signature === dernierRendu) return;
+  dernierRendu = signature;
+
   taskList.replaceChildren();
   const shown = tasks.filter(
     (t) =>
