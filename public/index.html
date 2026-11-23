@@ -5,15 +5,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Mes tâches - TP API temps réel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"> <!--- Mon propre CSS reste chargé en dernier et garde la main --->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <header>
-        <h1>ToDo CESI</h1>
+        <h1 class="animate__animated animate__fadeInUp">ToDo CESI</h1>
             <input type="checkbox" id="menu-toggle" class="menu-toggle">
             <label for="menu-toggle" class="burger" aria-label="Ouvrir le menu">☰</label>
         <nav class="menu" aria-label="Navigation principale">
+            <a href="#" class="active">Mes tâches
+            <span id="compteur" class="compteur">0</span> <!--Ajout d'un conmpteur de tâches-->
+            </a>
             <a class="boutton_entête" href="#">Accueil</a>
             <a class="boutton_entête_ligne" href="#">Mes tâches</a>
             <a class="boutton_entête" href="#">A propos</a>

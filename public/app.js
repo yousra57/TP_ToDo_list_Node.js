@@ -134,8 +134,19 @@ function render() {
   idsAffiches.clear();
   tasks.forEach(tache => idsAffiches.add(tache.id));
   premierAffichage = false;
+
+  // Étape 4 : compteur du menu
+  const compteur = document.querySelector("#compteur");
+  if (compteur.textContent !== String(tasks.length)) {
+    compteur.textContent = tasks.length;
+    jouerAnimation(compteur,
+      "animate__animated", "animate__heartBeat");
+  }
+
 }
 
+
+// --------------------------------------------------
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
   // 
@@ -154,6 +165,8 @@ form.addEventListener("submit", async (event) => {
     message.textContent = `Ajout impossible : ${err.message}`;
   }
 });
+
+
 
 // --------------------------------------------
 async function updateTask(task, done) {
