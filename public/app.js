@@ -13,6 +13,14 @@ const idsAffiches = new Set();
 let premierAffichage = true;
 let dernierRendu = '';
 
+function jouerAnimation(element, ...classes) { // Une animation ne se rejoue que si sa classe est retirée puis remise. Cette fonction s’en charge
+  element.classList.add(...classes);
+  element.addEventListener("animationend", () => {
+    element.classList.remove(...classes);
+  }, { once: true });
+}
+
+
 
 let tasks = [];
 function normalizeTask(t) {
@@ -130,6 +138,12 @@ function render() {
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
+  // 
+  if (titleInput.value.trim() === "") {
+  jouerAnimation(titleInput, "shake");
+  titleInput.focus();
+  return;
+}
   const title = titleInput.value.trim();
   if (title.length < 2) return;
   try {

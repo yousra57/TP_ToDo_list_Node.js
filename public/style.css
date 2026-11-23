@@ -129,12 +129,23 @@ h2 {
 }
 
 
-
+/* ------- Ajout d'une tâche : CHAMPS à remplir --------- */
 .form-row {
     display: flex;
     gap: 8px;
     margin: 8px 0 20px
 }
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+ 
+.shake {
+  animation: shake 0.4s ease-in-out;
+}
+
 
 input {
     flex: 1;
@@ -330,13 +341,10 @@ select {
 .menu a.active::after { transform: scaleX(1); }
 
 
-/*----------------- le menu téléphone glisse -------------------------*/
 
 
 
-
-
-
+/* --------- media query ----------------- */
 @media (max-width: 600px) {
     .burger { display: block; 
             font-size: 1.5rem; 

@@ -23,7 +23,7 @@
         <h2>Ma liste de tâches</h2>
                 <p id="paragraphe">Interface cliente d'une API Node.js / MySQL</p>
                 <span id="connection" role="status">Connexion temps réel…</span>
-            <form id="task-form">
+            <form id="task-form" novalidate> <!-- Sans novalidate, le champ required bloque l’envoi avant votre code : le navigateur affiche sa bulle et le champ ne tremble jamais -->
                 <label for="title">Nouvelle tâche</label>
                     <div class="form-row">
                         <input id="title" name="title" required minlength="2" maxlength="120" placeholder="Ex. Terminer le TP">
