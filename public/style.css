@@ -93,6 +93,19 @@ h2 {
     font-size: .9rem
 }
 
+@keyframes pulse {
+  from { opacity: 1;   transform: scale(1); }
+  to   { opacity: 0.4; transform: scale(0.85); }
+}
+
+#connection {
+  animation: pulse 0.8s ease-in-out infinite alternate;
+}
+
+#connection:hover {
+  animation-play-state: paused;
+}
+
 
 
 
